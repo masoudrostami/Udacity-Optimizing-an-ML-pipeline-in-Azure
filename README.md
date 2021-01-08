@@ -45,8 +45,8 @@ automl_config = AutoMLConfig(
 experiment_timeout_minutes=15)
 
 Pipeline comparison
-The accuracy of the two models was relatively similar with the hyperdive model (89.8%) accuracy and the autoML model (91.8%). This small different in the accuracy can be because of a variations in the cross-validation process. Also, AutoML test number of different algorithms and add a several preprocessing step prior to model training.Also, architecture of the model can be different in two approaches two
-The voting ensemble classifier with 91.92% accuracy achieved by AutoML that show high possibility of use of this approach in future.
+The accuracy of the two models was relatively similar with the hyperdive model (89.8%) accuracy and the autoML model (91.92%). This small different in the accuracy can be because of a variations in the cross-validation process. Also, AutoML test number of different algorithms and add a several preprocessing step prior to model training.Also, architecture of the model can be different in two approaches two
+The votingEnsemble classifier with 91.92% accuracy achieved by AutoML that show high possibility of use of this approach in future.
 Future work
 This project show how useful is the using of automated approach in machine learning in training our model and with less time we can train several model in the same time. Furthermore, running AutoML for much longer would likely find better models in this case. Furthermore, exploring hyperdrive with a broader variety of classification models would also be informative. Also, in the future I will try to improve the n_cross_validations because normally higher cross validation lead to higher accuracy model. However, a high number also raises computation time thus costs so there must be a balance between the two factors.
 
