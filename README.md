@@ -19,6 +19,8 @@ D)	Encoding the target variable.
 4)	Logistic regression as a classification method was used  and the parameters available within code show the regularization strength and maximum number of iterations.
 
 Azure's Hyperdrive was used for tuning the hyperparameter with the following main elements that including:
+
+
 1)	Parameter sampling:I used random parameter sampling because compare to the grid search and bayesian parameter sampling it takes less time to go through all the values of parameters and random parameter sampling enables a much more broad search over the parameter space and with it's capabilities to make use of concurrency would outperform bayesian sampling for large jobs. This is the codes I used in this step
 ps = RandomParameterSampling(
 {
