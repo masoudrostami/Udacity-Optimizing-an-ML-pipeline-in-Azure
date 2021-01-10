@@ -4,7 +4,7 @@ Project: Optimizing an ML Pipeline in Azure
 This is a project in the Udacity (Azure machine learning engineering using Azure) Nanodegree. In this project, we used two approach including 1) Hyper-drive (using logistic regression algorithms), 2) also we used Azure Auto ML to go through all of different algorithm. My steps in this project are including 1) Create a Tabular Dataset from this bank marketing dataset and evaluate it with using logistic regression model, 2) Next, using Hyper-Drive and choosing different parameters and to find the best hyper parameters for the logistic regression model, 3)Then loaed the bank dataset using “TabularDatasetFactory” and use AutoML to find the best model. AutoML go through all the models and choose the best, and 4) finally compare the model in two approaches and write a research report.
 
 2.	Summary
-This dataset contains different variables about individual customers that applying for the loans in the bank. Based on all different independent variables such as previous loan, housing, marital, education, employed and etc we will try to predict the new customer will subscribe or not in the bank. Based on our result, the best performing model was voting Ensemble with 91.92% accuracy in AzureMl. However, other model also have close comparable accuracy including XGBoost Classifier and StackEnsemble.
+This dataset contains different variables about individual customers that applying for the loans in the bank. Based on all different independent variables such as previous loan, housing, marital, education, employed and etc we will try to predict the new customer will subscribe or not in the bank. Based on our result, the best performing model was votingEnsemble with 91.64% accuracy for the AzureMl. However, other model also have close comparable accuracy including XGBoostClassifier and MaxAbsScaler LightGBM. Also, our model using hyperdrive show great accuracy of 91.76%.
 
 
 Scikit-learn Pipeline
@@ -15,7 +15,7 @@ A)	Removing missing values from the dataset.
 B)	One-hot encoding the variables including  job titles, contact, and education 
 C)	Encoding months of the year.
 D)	Encoding the target variable.
-3)	Split the dataset to train and test set by ration of 33%
+3)	Split the dataset to train and test set by ration of 20%
 4)	Logistic regression as a classification method was used  and the parameters available within code show the regularization strength and maximum number of iterations.
 
 Azure's Hyperdrive was used for tuning the hyperparameter with the following main elements that including:
@@ -38,7 +38,7 @@ The autoML pipeline is very similar to Hyper-drive with several distinguished di
 2)	The data are cleaned 
 3)	Choose the y variable as the dependent variable
 4)	The joined dataset is used as input in the autoML configuration and the autoML run is processed locally.
-The best model selected by autoML was a voting ensemble (~91.92% accurate). 
+The best model selected by autoML was a voting ensemble (~91.64% accurate). 
 These are different parameters that I used for the AutoMl:
 automl_config = AutoMLConfig(
     compute_target = compute_target,
@@ -53,10 +53,10 @@ experiment_timeout_minutes=15)
 
 
 Pipeline comparison
-The accuracy of the two models was relatively similar with the hyperdive model (89.8%) accuracy and the autoML model (91.92%). This small different in the accuracy can be because of a variations in the cross-validation process. Also, AutoML test number of different algorithms and add a several preprocessing step prior to model training.Also, architecture of the model can be different in two approaches two
-The votingEnsemble classifier with 91.92% accuracy achieved by AutoML that show high possibility of use of this approach in future.
+The accuracy of the two models was very similar with the hyperdive model (91.76%) accuracy and the autoML model (91.64%). This small different in the accuracy can be because of a variations in the cross-validation process and number of iterations. Also, AutoML test number of different algorithms and add a several preprocessing step prior to model training. In addition, , the difference in accuracy between the two models is rather trivial and although the HyperDrive model performed better in terms of accuracy, in my idea AutoML model is actually better because it is more fit for the highly imbalanced data that we have in our dataset. Also, If we were given more time to run the AutoML (We had just 25 minuted), the resulting model would certainly be much more better. Furthermore,  AutoML would make all the necessary calculations, trainings, validations, etc. without we do anything. 
 
 
 Future work
-This project show how useful is the using of automated approach in machine learning in training our model and with less time we can train several model in the same time. Furthermore, running AutoML for much longer would likely find better models in this case. Furthermore, exploring hyperdrive with a broader variety of classification models would also be informative. Also, in the future I will try to improve the n_cross_validations because normally higher cross validation lead to higher accuracy model. However, a high number also raises computation time thus costs so there must be a balance between the two factors. In addition, increasing the experiment time can make an improvement to this project. 
+This project show how useful is the using of automated approach and hyperdrive in machine learning in training our model and with less time we can train several model in the same time. Furthermore, running AutoML for much longer would likely find better models in this case. Furthermore, exploring hyperdrive with a broader variety of classification models would also be informative.
+Also, in the future I will try to improve the n_cross_validations in auto-ml because normally higher cross validation lead to higher accuracy model. However, a high number also raises computation time thus costs so there must be a balance between the two factors. In addition, increasing the experiment time can make an improvement to this project. 
 
